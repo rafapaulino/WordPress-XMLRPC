@@ -33,6 +33,13 @@ criar os posts agendados - não precisa ter o retorno da url
 utlizar os exemplos da pdo de conexao e update para escrever as chamadas da classe
 
 
+exemplos de conexões:
 https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/tutorials/getting-started.html
+http://php.net/manual/pt_BR/pdo.connections.php
+https://knpuniversity.com/screencast/symfony3-doctrine/insert-object
+https://stackoverflow.com/questions/24114367/how-to-write-an-insert-query-in-doctrine
+http://www.diogomatheus.com.br/blog/php/trabalhando-com-pdo-no-php/
+https://phpunit.de/getting-started/phpunit-6.html
+http://docs.guzzlephp.org/en/stable/
 
 */
