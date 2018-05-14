@@ -42,6 +42,10 @@ class ComposerStaticInit3be37ef57c731f27573f3ee752c8e9cd
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
+        'B' => 
+        array (
+            'BlogConnection\\' => 15,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -87,6 +91,10 @@ class ComposerStaticInit3be37ef57c731f27573f3ee752c8e9cd
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'BlogConnection\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -100,6 +108,7 @@ class ComposerStaticInit3be37ef57c731f27573f3ee752c8e9cd
     );
 
     public static $classMap = array (
+        'BlogConnection\\Connection' => __DIR__ . '/../..' . '/src/Connection.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',

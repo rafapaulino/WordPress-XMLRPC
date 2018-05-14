@@ -1,4 +1,31 @@
 <?php
+require_once 'vendor/autoload.php';
+
+use BlogConnection\Connection;
+
+$conn = new Connection(
+    'http://sonytv.com.br',
+    'rafaclasses@gmail.com',
+    'NyN6KN8iXdEtmc(ucor8@$$F'
+);
+
+$conn2 = new Connection(
+    'https://dsomeluz.com.br',
+    'tereza',
+    'QB@&22K#$N%4M&1@6&5L'
+);
+
+$conn3 = new Connection(
+    'https://dsomeluz43756874365.com.br',
+    'tereza',
+    'QB@&22K#$N%4M&1@6&5L'
+);
+
+if ($conn3->getConnectError()) {
+    echo $conn3->getErrorMessage();
+}
+
+
 /*
 http://docs.guzzlephp.org/en/stable/overview.html#installation
 https://github.com/php-curl-class/php-curl-class
