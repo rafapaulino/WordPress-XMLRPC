@@ -108,7 +108,6 @@ class ComposerStaticInit3be37ef57c731f27573f3ee752c8e9cd
     );
 
     public static $classMap = array (
-        'BlogConnection\\Connection' => __DIR__ . '/../..' . '/src/Connection.php',
         'BlogConnection\\Spintax' => __DIR__ . '/../..' . '/src/Spintax.php',
         'BlogConnection\\WPObject' => __DIR__ . '/../..' . '/src/WPObject.php',
         'BlogConnection\\XMLRPC' => __DIR__ . '/../..' . '/src/XMLRPC.php',

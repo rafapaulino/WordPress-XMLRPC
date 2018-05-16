@@ -22,7 +22,8 @@ class XMLRPC
 
 	public function __construct( $wp, $debug = false, $timeout = 60, $verifyssl = false )
 	{
-		$this->_encode = array(
+        $this->_connectError = false;
+        $this->_encode = array(
 			'encoding' => 'UTF-8'
         );
         
@@ -185,5 +186,10 @@ class XMLRPC
     public function getErrorMessage()
     {
         return (string) $this->_errorMessage;
+    }
+
+    public function getStatusCode()
+    {
+        return $this->_statusCode;
     }
 }

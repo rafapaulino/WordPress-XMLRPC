@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'BlogConnection\\Connection' => $baseDir . '/src/Connection.php',
     'BlogConnection\\Spintax' => $baseDir . '/src/Spintax.php',
     'BlogConnection\\WPObject' => $baseDir . '/src/WPObject.php',
     'BlogConnection\\XMLRPC' => $baseDir . '/src/XMLRPC.php',
