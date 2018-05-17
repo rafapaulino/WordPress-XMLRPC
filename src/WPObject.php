@@ -1,18 +1,22 @@
 <?php
 namespace BlogConnection;
 
+use BlogConnection\WPImage;
+
 class WPObject
 {
 	private $_website;
 	private $_login;
 	private $_password;
     private $_post;
+    private $_image;
     
     public function __construct( $website, $login, $password )
 	{
 		$this->_website = $website;
 		$this->_login = $login;
-		$this->_password = $password;
+        $this->_password = $password;
+        $this->_image = array();
 		
 		$this->_post = array(
 			'mt_allow_comments' => 0, // 1 to allow comments
@@ -65,10 +69,24 @@ class WPObject
 		$content = preg_replace('/\t/', '', trim($content));
 		$content = preg_replace( "/\r|\n/", "", $content );
 		//return iconv(mb_detect_encoding($content, mb_detect_order(), true), "UTF-8", $content);
-		//$content = mb_convert_encoding(trim($content),'ISO-8859-1','UTF-8');
-		$content = substr($content, 3,strlen($content));  
+		$content = mb_convert_encoding(trim($content),'ISO-8859-1','UTF-8');
+		$content = substr($content, 5,strlen($content));  
 		return trim($content);
-	}
+    }
+    
+    public function setImage( $image )
+    {
+        $wpImg = new WPImage( $image );
+        
+        if ( $wpImg->getFileExists() ) {
+            $this->_image = $wpImg->getContents();
+        }
+    }
+
+    public function getImage()
+    {
+        return $this->_image;
+    }
 
     /**
      * @return mixed

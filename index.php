@@ -10,9 +10,9 @@ use BlogConnection\XMLRPC;
 $spintax = new Spintax();
 
 $wordpress = new WPObject(
-    'https://mercosurmujeres.org',
-    '435346df',
-    'warrerewrwr'
+    'https://imoveisdotiosam.com.br',
+    'loucodepedra',
+    '3#@M%&Q4%993SLRDS@P$'
 );
 
 $title = '{{Inglês} É Bom? Vale {A} Pena? Bônus Extras |Carol Me Ensina {Como} Aprender {Inglês} }';
@@ -23,14 +23,18 @@ $content = file_get_contents( CURRENT_DIR . '/txt/' . rand(1,12) . '.txt');
 $content = $spintax->process($content);
 
 $wordpress->setContent( $content );
+$wordpress->setImage( CURRENT_DIR . DIRECTORY_SEPARATOR . 'image.jpg' );
 //print_r($wordpress->getPost());
 
 $xml = new XMLRPC( $wordpress, true );
 $response = $xml->insertPost();
 var_dump($response);
 
-if ($xml->getConnectError()) {
+if ( $xml->getConnectError() ) {
     echo $xml->getErrorMessage();
+} else {
+    $img_response = $xml->insertImage($response['id']);
+    var_dump($img_response);
 }
 
 
@@ -50,6 +54,7 @@ https://code.tutsplus.com/articles/xml-rpc-in-wordpress--wp-25467
 https://linuxprograms.wordpress.com/2010/07/16/wordpress-xml-rpc/
 https://linuxprograms.wordpress.com/2010/08/11/wordpress-xmlrpc-metaweblog-newpost/
 https://www.tutorialspoint.com/xml-rpc/index.htm
+https://codex.wordpress.org/XML-RPC_WordPress_API/Posts#wp.newPost
 
 a requisição sempre terá um xml-enconde-request
 

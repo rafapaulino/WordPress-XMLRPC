@@ -82,6 +82,62 @@ class XMLRPC
         return $this->_logName;
     }
 
+    //https://codex.wordpress.org/XML-RPC_WordPress_API/Media
+    public function insertImage( $id )
+    {
+        $image = $this->_wordpress->getImage();
+        $response = array(
+			'error' => true
+        );
+        $result = array();
+        
+        if ( count($image) > 0 ) {
+            
+            $image['post_id'] = intval($id);
+            $this->_request = xmlrpc_encode_request('wp.uploadFile', array(
+                    1,
+                    $this->_wordpress->getLogin(), 
+                    $this->_wordpress->getPassword(), 
+                    $image,
+                    true
+                ),
+                $this->_encode
+            );
+            $result = $this->connect();
+            if ( isset($result['attachment_id']) ) {
+                $result['error'] = false;
+                $result['image'] = $this->attachImage($result['attachment_id'], $id);
+            }
+        }
+
+        return array_merge($response, $result);
+    }
+
+    private function attachImage($image_id, $post_id) 
+    {
+        $content = array(
+            'post_status' => 'publish',
+            'wp_post_thumbnail' => $image_id
+        );
+        
+        $response = array(
+			'error' => true
+        );
+
+        $result = array();
+
+        $this->_request = xmlrpc_encode_request('metaWeblog.editPost', array(
+                $post_id,
+				$this->_wordpress->getLogin(), 
+				$this->_wordpress->getPassword(), 
+				$content, 
+				true
+			),
+			$this->_encode
+        );
+        return $this->connect();
+    }
+
     public function insertPost()
 	{
         $response = array(

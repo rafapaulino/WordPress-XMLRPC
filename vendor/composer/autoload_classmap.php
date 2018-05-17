@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'BlogConnection\\Spintax' => $baseDir . '/src/Spintax.php',
+    'BlogConnection\\WPImage' => $baseDir . '/src/WPImage.php',
     'BlogConnection\\WPObject' => $baseDir . '/src/WPObject.php',
     'BlogConnection\\XMLRPC' => $baseDir . '/src/XMLRPC.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
