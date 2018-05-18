@@ -30,7 +30,6 @@ class WPImage
 
     private function setName()
     {
-        var_dump($this->_path);
         $tmp = explode(DIRECTORY_SEPARATOR, $this->_path);
         $name = $tmp[count($tmp) -1];
         $this->_name = $name;

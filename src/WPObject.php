@@ -23,7 +23,6 @@ class WPObject
             'mt_allow_pings' => 0, // 1 to allow trackbacks
             'post_type' => 'post',
             'post_status' => 'publish',
-            'categories' => array(1)
 		);
 
 		return $this;
@@ -60,6 +59,14 @@ class WPObject
 	public function setCategories( array $categories )
 	{
 		$this->_post['categories'] = $categories;
+
+		return $this;
+    }
+
+    //https://wordpress.stackexchange.com/questions/171953/xml-rpc-add-category-to-post-data
+    public function setTags( array $tags )
+	{
+		$this->_post['mt_keywords'] = $tags;
 
 		return $this;
     }

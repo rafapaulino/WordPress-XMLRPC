@@ -157,9 +157,68 @@ class XMLRPC
         $output = $this->connect();
         if ( is_numeric($output) ) {
             $result = $this->getPostUrl( $output );
+            $this->addPostCategories( $output );
+            
         }
 
         return array_merge($response, $result);
+    }
+
+    private function addPostCategories($post_id)
+    {
+        $categories = $this->addCategories();
+        $this->_request = xmlrpc_encode_request('metaWeblog.editPost', array(
+                $post_id,
+                $this->_wordpress->getLogin(), 
+                $this->_wordpress->getPassword(), 
+                array(
+                    'post_category' => $categories
+                ), 
+                true
+            ),
+            $this->_encode
+        );
+        return $this->connect();
+    }
+
+    private function addCategories()
+    {
+        $categories = array();
+        $posts = $this->_wordpress->getPost();
+        if ( array_key_exists("categories",$posts) ) {
+            $categorias = $posts['categories'];
+            if ( count($categorias) > 0 ) {
+                foreach ($categorias as $categoria) {
+                    $categories[] = $this->setTaxonomy($categoria);
+                }
+            }
+        }
+        return $categories;
+    }
+
+    public function setTaxonomy($name, $taxonomy = 'category')
+    {
+        $response = array(
+			'error' => true
+        );
+        $result = array();
+        $this->_request = xmlrpc_encode_request('wp.newTerm', array(
+				1,
+				$this->_wordpress->getLogin(), 
+				$this->_wordpress->getPassword(), 
+				array(
+                    'name' => $name,
+                    'taxonomy' => $taxonomy
+                ), 
+				true
+			),
+			$this->_encode
+        );
+        $output = $this->connect();
+        if ( is_string($output) ) {
+            return intval($output);
+        } 
+        return false;
     }
     
     private function connect()
