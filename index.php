@@ -51,34 +51,3 @@ if ( $xml->getConnectError() ) {
 }
 
 $taxonomy = $xml->setTaxonomy('teste');
-
-
-
-/*
-http://docs.guzzlephp.org/en/stable/overview.html#installation
-https://github.com/php-curl-class/php-curl-class
-https://github.com/Seldaek/monolog
-
-http://docs.guzzlephp.org/en/stable/request-options.html#progress
-https://gist.github.com/39ff/80065cf080c87d4bbb30
-
-xmlrpc:
-https://code.tutsplus.com/articles/xml-rpc-in-wordpress--wp-25467
-https://linuxprograms.wordpress.com/2010/07/16/wordpress-xml-rpc/
-https://linuxprograms.wordpress.com/2010/08/11/wordpress-xmlrpc-metaweblog-newpost/
-https://www.tutorialspoint.com/xml-rpc/index.htm
-https://codex.wordpress.org/XML-RPC_WordPress_API/Posts#wp.newPost
-
-a requisição sempre terá um xml-enconde-request
-
-passos que precisam ser realizados
-
-enviar uma imagem para a biblioteca e informar o id da imagem para ser utilizado depois
-deletar um post através do id -- caso eu queira, porém menos importante
-
-
-segunda etapa
-criar os posts agendados - não precisa ter o retorno da url
-
-
-*/
