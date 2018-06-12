@@ -72,7 +72,6 @@ class WPObject
 
     public function setDate( $date )
     {
-        $date = new \IXR_Date( $date );
         $this->_post['post_date'] = $date;
     }
     
