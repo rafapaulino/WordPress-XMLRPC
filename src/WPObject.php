@@ -63,12 +63,17 @@ class WPObject
 		return $this;
     }
 
-    //https://wordpress.stackexchange.com/questions/171953/xml-rpc-add-category-to-post-data
     public function setTags( array $tags )
 	{
 		$this->_post['mt_keywords'] = $tags;
 
 		return $this;
+    }
+
+    public function setDate( $date )
+    {
+        $date = new \IXR_Date( $date );
+        $this->_post['post_date'] = $date;
     }
     
     private function correctContent( $content )
