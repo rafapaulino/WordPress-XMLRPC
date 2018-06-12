@@ -81,7 +81,7 @@ class WPObject
 		$content = preg_replace( "/\r|\n/", "", $content );
 		//return iconv(mb_detect_encoding($content, mb_detect_order(), true), "UTF-8", $content);
 		$content = mb_convert_encoding(trim($content),'ISO-8859-1','UTF-8');
-		$content = substr($content, 5,strlen($content));  
+		//$content = substr($content, 5,strlen($content));  
 		return trim($content);
     }
     
