@@ -104,9 +104,16 @@ class XMLRPC
                 $this->_encode
             );
             $result = $this->connect();
+            
             if ( isset($result['attachment_id']) ) {
+                
                 $result['error'] = false;
                 $result['image'] = $this->attachImage($result['attachment_id'], $id);
+            
+            } else if ( isset($result['id']) ) {
+                
+                $result['error'] = false;
+                $result['image'] = $this->attachImage($result['id'], $id);
             }
         }
 
